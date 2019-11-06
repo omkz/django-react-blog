@@ -1,5 +1,4 @@
 import React from 'react';
-import PostList from "./components/PostList";
 import AllPost from "./components/AllPost";
 
 class App extends React.Component {
