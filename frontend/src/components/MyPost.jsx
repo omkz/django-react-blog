@@ -10,6 +10,10 @@ class MyPost extends React.Component {
     }
 
     componentDidMount() {
+      this.getPosts();
+    }
+
+    getPosts(){
         axios.get("http://127.0.0.1:8000/post.json").then(response => {
             this.setState({posts: response.data});
         });
@@ -19,11 +23,8 @@ class MyPost extends React.Component {
         if (window.confirm("Are you sure?")) {
             axios.delete(`http://127.0.0.1:8000/post/${id}`)
                 .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    this.getPosts();
                 })
-            // this.props.history.push('/mypost');
-
         }
     };
 

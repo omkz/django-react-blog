@@ -89,7 +89,7 @@ class EditPost extends React.Component {
                         </div>
 
                         <label className="checkbox">
-                            <input type="checkbox" value={this.state.is_public} onChange={this.onChangePublic}/>
+                            <input type="checkbox" checked={this.state.is_public} onChange={this.onChangePublic}/>
                             Public (true if checked)
                         </label>
 
