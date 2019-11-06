@@ -2,10 +2,11 @@ from .models import Post
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from blog.serializers import UserSerializer, GroupSerializer, PostSerializers
+from rest_framework import generics
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = User.objects.all().order_by('-created_at')
     serializer_class = UserSerializer
 
 class GroupViewSet(viewsets.ModelViewSet):
