@@ -52,12 +52,14 @@ class CreatePost extends React.Component {
             body: '',
             is_public: ''
         })
+
+        this.props.history.push('/mypost');
     }
 
     render() {
         return (
             <div className="section columns">
-                <div className="column is-4 box">
+                <div className="column is-half is-offset-one-quarter box">
                     <form onSubmit={this.onSubmit}>
                         <div className="field">
                             <label className="label">Title</label>
