@@ -1,18 +1,15 @@
 import React from 'react';
 import PostList from "./components/PostList";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
+import AllPost from "./components/AllPost";
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <PostList />
+      <div className={"section"}>
+        <div className="columns">
+          <div className="column is-three-quarters"> <AllPost /></div>
+          <div className="column"></div>
+        </div>
       </div>
     )
   }
