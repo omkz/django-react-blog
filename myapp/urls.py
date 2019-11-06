@@ -6,8 +6,8 @@ from django.contrib import admin
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'post', views.PostViewSet)
 # router.register(r'post', views.PostViewSet)
-router.register(r'post', views.PostViewSet, 'todo')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
