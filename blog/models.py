@@ -1,6 +1,7 @@
 from django.db import models
 
 class Post(models.Model):
+    author = models.ForeignKey('auth.User', related_name='post', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     body = models.TextField()
     is_public = models.BooleanField()
