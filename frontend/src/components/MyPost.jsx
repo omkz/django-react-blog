@@ -1,12 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {authHeader} from "../helpers/auth-header";
 
 class MyPost extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {posts: []};
+        this.state = {
+            posts: [],
+            user: {}
+        };
     }
 
     componentDidMount() {
@@ -14,8 +18,13 @@ class MyPost extends React.Component {
     }
 
     getPosts(){
-        axios.get("http://127.0.0.1:8000/post.json").then(response => {
-            this.setState({posts: response.data});
+        axios.get("http://127.0.0.1:8000/post.json",{
+               headers: authHeader()
+        }).then(response => {
+            this.setState({
+                posts: response.data,
+                user: JSON.parse(localStorage.getItem('user')),
+            });
         });
     }
 
