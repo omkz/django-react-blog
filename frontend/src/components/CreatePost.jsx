@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import {authHeader} from "../helpers/auth-header";
 
 class CreatePost extends React.Component {
     constructor(props) {
@@ -44,16 +45,16 @@ class CreatePost extends React.Component {
             body: this.state.body,
             is_public: this.state.is_public
         };
-        axios.post('http://localhost:8000/post/', object)
-            .then(res => console.log(res.data));
+        axios.post('http://localhost:8000/post/', object,{
+            headers: authHeader()
+        }).then(res => console.log(res.data));
 
         this.setState({
             title: '',
             body: '',
             is_public: ''
         })
-
-        this.props.history.push('/mypost');
+        //this.props.history.push('/mypost');
     }
 
     render() {

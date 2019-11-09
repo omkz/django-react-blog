@@ -5,6 +5,7 @@ from blog.serializers import UserSerializer, GroupSerializer, PostSerializer
 from rest_framework.permissions import IsAuthenticated
 
 
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer

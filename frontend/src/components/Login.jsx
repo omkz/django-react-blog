@@ -34,7 +34,8 @@ class Login extends React.Component {
             password: this.state.password,
         };
         axios.post('http://localhost:8000/rest-auth/login/', object)
-            .then(res => console.log(res.data))
+            .then(res =>
+                localStorage.setItem('user', JSON.stringify(res.data)))
             .catch(function (error) {
                 console.log(error);
             });

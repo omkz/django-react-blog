@@ -15,6 +15,7 @@ import SignUp from "./components/SignUp";
 import CreatePost from "./components/CreatePost";
 import MyPost from "./components/MyPost";
 import EditPost from "./components/EditPost";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 const router = (
@@ -50,7 +51,7 @@ const router = (
             <Route exact path="/" component={App}/>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={SignUp}/>
-            <Route path="/createpost" component={CreatePost}/>
+            <PrivateRoute path="/createpost" component={CreatePost}/>
             <Route path="/mypost" component={MyPost}/>
             <Route path='/edit/:id' component={ EditPost } />
         </Switch>
