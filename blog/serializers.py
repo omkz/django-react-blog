@@ -1,7 +1,9 @@
 from rest_framework import serializers
 
+
 from django.contrib.auth.models import User, Group
 from blog.models import Post
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -15,7 +17,10 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 
 
-class PostSerializers(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField(default=serializers.CurrentUserDefault(), read_only=True)
+
     class Meta:
         model= Post
-        fields = ["id","title", "body", "is_public", "created_at"]
+        fields = ["id","title", "body", "is_public", "created_at", "updated_at", "author"]
+
