@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import {authHeader} from "../helpers/auth-header";
 
 class EditPost extends React.Component {
     constructor(props) {
@@ -13,18 +14,21 @@ class EditPost extends React.Component {
         this.state = {
             title: '',
             body: '',
-            is_public: false
+            is_public: false,
+            user: {}
         }
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8000/post/' + this.props.match.params.id)
-            .then(response => {
+        axios.get('http://localhost:8000/post/' + this.props.match.params.id, {
+             headers: authHeader()
+        }).then(response => {
                 console.log(response);
                 this.setState({
                     title: response.data.title,
                     body: response.data.body,
-                    is_public: response.data.is_public
+                    is_public: response.data.is_public,
+                    user: JSON.parse(localStorage.getItem('user')),
                 });
             })
             .catch(function (error) {
@@ -60,8 +64,9 @@ class EditPost extends React.Component {
             body: this.state.body,
             is_public: this.state.is_public
         };
-        axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/', obj)
-            .then(res => console.log(res.data));
+        axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/', obj,{
+               headers: authHeader()
+        }).then(res => console.log(res.data));
 
         this.props.history.push('/mypost');
     }

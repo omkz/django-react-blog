@@ -54,7 +54,7 @@ class CreatePost extends React.Component {
             body: '',
             is_public: ''
         })
-        //this.props.history.push('/mypost');
+        this.props.history.push('/mypost');
     }
 
     render() {
