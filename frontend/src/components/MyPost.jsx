@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {authHeader} from "../helpers/auth-header";
 
 class MyPost extends React.Component {
@@ -14,12 +14,12 @@ class MyPost extends React.Component {
     }
 
     componentDidMount() {
-      this.getPosts();
+        this.getPosts();
     }
 
-    getPosts(){
-        axios.get("http://127.0.0.1:8000/post.json",{
-               headers: authHeader()
+    getPosts() {
+        axios.get("http://127.0.0.1:8000/post.json", {
+            headers: authHeader()
         }).then(response => {
             this.setState({
                 posts: response.data,
@@ -30,10 +30,11 @@ class MyPost extends React.Component {
 
     deletePost(id) {
         if (window.confirm("Are you sure?")) {
-            axios.delete(`http://127.0.0.1:8000/post/${id}`)
-                .then(res => {
-                    this.getPosts();
-                })
+            axios.delete(`http://127.0.0.1:8000/post/${id}`, {
+                headers: authHeader()
+            }).then(res => {
+                this.getPosts();
+            })
         }
     };
 
@@ -48,7 +49,7 @@ class MyPost extends React.Component {
                             <p>{post.created_at}</p>
                         </div>
                         <footer className="card-footer">
-                            <Link to={"/edit/"+post.id} className="card-footer-item">Edit</Link>
+                            <Link to={"/edit/" + post.id} className="card-footer-item">Edit</Link>
                             <a href="#" onClick={() => this.deletePost(post.id)} className="card-footer-item">Delete</a>
                         </footer>
                     </div>
