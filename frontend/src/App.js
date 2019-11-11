@@ -10,25 +10,64 @@ import EditPost from "./components/EditPost";
 import {
     Switch,
     Route,
-    Link
+    Link,
+    withRouter
 } from "react-router-dom";
+import {getCurrentUser} from "./helpers/auth";
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentUser: null,
+            isAuthenticated: false
+        }
+        this.loadCurrentUser = this.loadCurrentUser.bind(this);
+    }
+
+    loadCurrentUser() {
+        this.setState({
+            isLoading: true
+        });
+        getCurrentUser()
+            .then(response => {
+                this.setState({
+                    currentUser: response,
+                    isAuthenticated: true,
+                    isLoading: false
+                });
+            }).catch(error => {
+            this.setState({
+                isLoading: false
+            });
+        });
+    }
+
+
+    componentDidMount() {
+        this.loadCurrentUser();
+    }
+
     render() {
         return (
-            <React.Fragment>
-                <Header/>
+            <div>
+                <Header isAuthenticated={this.state.isAuthenticated}
+                        currentUser={this.state.currentUser}
+                />
+
                 <Switch>
                     <Route exact path="/" component={AllPost}/>
                     <Route path="/login" component={Login}/>
                     <Route path="/signup" component={SignUp}/>
-                    <PrivateRoute path="/createpost" component={CreatePost}/>
-                    <PrivateRoute path="/mypost" component={MyPost}/>
-                    <PrivateRoute path='/edit/:id' component={EditPost}/>
+                    <PrivateRoute authenticated={this.state.isAuthenticated} path="/createpost" component={CreatePost}/>
+                    <PrivateRoute authenticated={this.state.isAuthenticated} path="/mypost" component={MyPost}/>
+                    <PrivateRoute authenticated={this.state.isAuthenticated} path='/edit/:id' component={EditPost}/>
+
                 </Switch>
-            </React.Fragment>
+            </div>
         )
     }
 }
 
-export default App;
+export default withRouter(App);
+;

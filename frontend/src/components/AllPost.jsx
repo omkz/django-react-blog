@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link, withRouter} from 'react-router-dom';
 
 class AllPost extends React.Component {
 
@@ -31,4 +32,4 @@ class AllPost extends React.Component {
     }
 }
 
-export default AllPost;
+export default withRouter(AllPost);

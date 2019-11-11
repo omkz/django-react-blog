@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import {authHeader} from "../helpers/auth-header";
+import {Link, withRouter} from 'react-router-dom';
 
 class CreatePost extends React.Component {
     constructor(props) {
@@ -96,4 +97,4 @@ class CreatePost extends React.Component {
     }
 }
 
-export default CreatePost
+export default withRouter(CreatePost);
