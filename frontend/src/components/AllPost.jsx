@@ -16,7 +16,7 @@ class AllPost extends React.Component {
 
     render() {
         return (
-            <div className={"container"}>
+            <div className={"section"}>
                 {this.state.posts.map(post => (
                     <div className={"box"} key={post.id}>
                         <div className="content">
