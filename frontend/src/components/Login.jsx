@@ -1,9 +1,11 @@
 import React from 'react'
 import axios from "axios";
+import {logout} from "../helpers/auth";
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
+        logout();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);

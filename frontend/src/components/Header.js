@@ -31,7 +31,7 @@ class Header extends React.Component {
                         <div className="navbar-end">
                             <div className="navbar-item">
                                 <div className="buttons">
-                                    <Link to="/signup" className="button is-primary">Logout</Link>
+                                    <Link to="/login" className="button is-primary">Logout</Link>
                                 </div>
                             </div>
                         </div>
