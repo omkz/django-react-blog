@@ -23,8 +23,11 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+    """
+    GET all public post without permission
+    """
     @action(methods=['get'], detail=False, permission_classes=[AllowAny])
-    def post_list(self, request):
+    def public(self, request):
         queryset = Post.objects.filter(is_public__exact=True)
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data)
