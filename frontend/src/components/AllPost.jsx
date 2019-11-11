@@ -9,7 +9,7 @@ class AllPost extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("http://127.0.0.1:8000/post.json").then(response => {
+        axios.get("http://127.0.0.1:8000/post/post_list").then(response => {
             this.setState({posts: response.data});
         });
     }
