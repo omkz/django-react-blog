@@ -46,7 +46,8 @@ class Login extends React.Component {
             password: ''
         })
 
-        this.props.history.push('/mypost');
+        console.log("harusnya redirect");
+        this.props.history.push('/');
     }
 
     render() {
