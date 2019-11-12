@@ -45,7 +45,7 @@ class EditPost extends React.Component {
 
 
     onChangePublic(e) {
-        const {is_public} = e.target;
+        // const {is_public} = e.target;
         this.setState({
             is_public: !this.state.is_public
         });
