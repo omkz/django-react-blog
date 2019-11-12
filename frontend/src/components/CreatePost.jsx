@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import {authHeader} from "../helpers/auth-header";
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class CreatePost extends React.Component {
     constructor(props) {

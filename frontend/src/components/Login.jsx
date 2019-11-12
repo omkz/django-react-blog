@@ -59,14 +59,14 @@ class Login extends React.Component {
                         <div className="field">
                             <label className="label">Username</label>
                             <div className="control">
-                                <input className="input" type="text" value={this.state.username}
+                                <input className="input" type="text" value={username}
                                        onChange={this.onChangeUsername}/>
                             </div>
                         </div>
                         <div className="field">
                             <label className="label">Password</label>
                             <div className="control">
-                                <input className="input" type="password" value={this.state.password}
+                                <input className="input" type="password" value={password}
                                        onChange={this.onChangePassword}/>
                             </div>
                         </div>

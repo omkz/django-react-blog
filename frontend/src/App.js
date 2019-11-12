@@ -10,7 +10,6 @@ import EditPost from "./components/EditPost";
 import {
     Switch,
     Route,
-    Link,
     withRouter
 } from "react-router-dom";
 import {getCurrentUser} from "./helpers/auth";

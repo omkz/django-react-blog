@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class AllPost extends React.Component {
 
