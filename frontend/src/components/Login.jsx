@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from "axios";
-import {logout} from "../helpers/auth";
+import {authService} from "../helpers/auth";
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        logout();
+        authService.logout();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
@@ -34,19 +34,7 @@ class Login extends React.Component {
             username: this.state.username,
             password: this.state.password,
         };
-        axios.post('http://localhost:8000/rest-auth/login/', object)
-            .then(res =>
-                localStorage.setItem('user', JSON.stringify(res.data)))
-            .catch(function (error) {
-                console.log(error);
-            });
-
-        this.setState({
-            username: '',
-            password: ''
-        })
-
-        console.log("harusnya redirect");
+        authService.login(object.username, object.password)
         this.props.history.push('/');
     }
 

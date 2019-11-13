@@ -3,32 +3,20 @@ import {
     Route,
     Redirect
   } from "react-router-dom";
+import {authService} from "../helpers/auth";
 
-
-// const PrivateRoute = ({ component: Component, authenticated, ...rest }) => (
-//     <Route
-//       {...rest}
-//       render={props =>
-//         authenticated ? (
-//           <Component {...rest} {...props} />
-//         ) : (
-//           <Redirect
-//             to={{
-//               pathname: '/login',
-//               state: { from: props.location }
-//             }}
-//           />
-//         )
-//       }
-//     />
-// );
 
 export const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route {...rest} render={props => (
-        localStorage.getItem('user')
-            ? <Component {...props} />
-            : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-    )} />
-)
+    <Route {...rest} render={props => {
+        const currentUser = authService.currentUserValue;
+        console.log(currentUser)
+        if (!currentUser) {
+            // not logged in so redirect to login page with the return url
+            return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+        }
 
+        // authorised so return component
+        return <Component {...props} />
+    }} />
+)
 export default PrivateRoute

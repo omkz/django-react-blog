@@ -1,19 +1,36 @@
 import axios from "axios";
 import {authHeader} from "./auth-header";
 
-export function getCurrentUser() {
-    if (!localStorage.getItem("user")) {
-        return Promise.reject("No access token set.");
+import {BehaviorSubject} from 'rxjs';
+
+const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')));
+
+export const authService = {
+    login,
+    logout,
+    currentUser: currentUserSubject.asObservable(),
+    get currentUserValue() {
+        return currentUserSubject.value
     }
+};
 
-    return axios.get("http://127.0.0.1:8000/rest-auth/user/",{
-        headers: authHeader()
-    }).then(response => {
-        return response.data;
-    });
+function login(username, password) {
+    const object = {
+        username: username,
+        password: password
+    };
+
+    axios.post('http://localhost:8000/rest-auth/login/', object)
+        .then(res => {
+            localStorage.setItem('user', JSON.stringify(res.data));
+            currentUserSubject.next(res);
+        }).catch(function (error) {
+            console.log(error);
+        });
 }
 
-export function logout() {
-    // remove user from local storage to log user out
+function logout() {
     localStorage.removeItem('user');
+    currentUserSubject.next(null);
 }
+
