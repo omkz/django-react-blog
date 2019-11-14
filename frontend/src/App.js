@@ -76,6 +76,7 @@ class App extends React.Component {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
+                                <Link to="/signup" className="button is-primary">Sign Up</Link>
                                 <Link to="/login" className="button is-primary">Login</Link>
                             </div>
                         </div>
