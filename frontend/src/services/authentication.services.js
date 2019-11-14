@@ -19,13 +19,12 @@ function login(username, password) {
         password: password
     };
 
-    axios.post('http://localhost:8000/rest-auth/login/', object)
+    return axios.post('http://localhost:8000/rest-auth/login/', object)
         .then(res => {
             localStorage.setItem('user', JSON.stringify(res.data));
             currentUserSubject.next(res);
-        }).catch(function (error) {
-            console.log(error);
-        });
+            return res.data;
+        })
 }
 
 function logout() {
