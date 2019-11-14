@@ -12,6 +12,8 @@ import {
     withRouter, Link
 } from "react-router-dom";
 import {authenticationService} from "./services/authentication.services";
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class App extends React.Component {
     constructor(props) {
@@ -87,6 +89,7 @@ class App extends React.Component {
 
         return (
             <div>
+                <ToastContainer/>
                 {nav}
                 <Switch>
                     <Route exact path="/" component={AllPost}/>

@@ -1,5 +1,6 @@
 import React from 'react'
 import {authenticationService} from "../services/authentication.services";
+import {toast} from "react-toastify";
 
 class Login extends React.Component {
     constructor(props) {
@@ -36,10 +37,11 @@ class Login extends React.Component {
         authenticationService.login(object.username, object.password)
             .then(res => {
                 this.props.history.push("/");
-                console.log(res)
+                toast.success("You're successfully logged in.");
             })
             .catch(function (error) {
-            console.log(error);
+            console.log(error.message);
+            toast.error("login failed");
         });
 
     }
