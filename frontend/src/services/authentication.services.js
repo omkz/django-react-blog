@@ -1,11 +1,10 @@
 import axios from "axios";
-import {authHeader} from "./auth-header";
 
 import {BehaviorSubject} from 'rxjs';
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')));
 
-export const authService = {
+export const authenticationService = {
     login,
     logout,
     currentUser: currentUserSubject.asObservable(),

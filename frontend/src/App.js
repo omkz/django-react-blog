@@ -11,7 +11,7 @@ import {
     Route,
     withRouter, Link
 } from "react-router-dom";
-import {authService} from "./helpers/auth";
+import {authenticationService} from "./services/authentication.services";
 
 class App extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        authService.currentUser.subscribe(x =>
+        authenticationService.currentUser.subscribe(x =>
             this.setState({currentUser: x}
             ));
     }
@@ -102,4 +102,3 @@ class App extends React.Component {
 }
 
 export default withRouter(App);
-;

@@ -1,11 +1,10 @@
 import React from 'react'
-import axios from "axios";
-import {authService} from "../helpers/auth";
+import {authenticationService} from "../services/authentication.services";
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        authService.logout();
+        authenticationService.logout();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
@@ -34,7 +33,7 @@ class Login extends React.Component {
             username: this.state.username,
             password: this.state.password,
         };
-        authService.login(object.username, object.password)
+        authenticationService.login(object.username, object.password)
         this.props.history.push('/');
     }
 
