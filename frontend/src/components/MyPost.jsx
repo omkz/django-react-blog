@@ -51,6 +51,7 @@ class MyPost extends React.Component {
                         <footer className="card-footer">
                             <Link to={"/edit/" + post.id} className="card-footer-item">Edit</Link>
                             <Link to={"#"} onClick={() => this.deletePost(post.id)} className="card-footer-item">Delete</Link>
+                            <Link to={"/detail/" + post.id} className="card-footer-item">Details</Link>
                         </footer>
                     </div>
                 ))}

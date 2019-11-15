@@ -51,6 +51,8 @@ class CreatePost extends React.Component {
             headers: authHeader()
         }).then(res => {
             this.props.history.push('/mypost');
+            const { from } = this.props.location.state || { from: { pathname: "/" } };
+            this.props.history.push(from);
         }).catch(function (error) {
             toast.error(JSON.stringify(error.response.data));
         })
