@@ -53,7 +53,7 @@ class App extends React.Component {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <Link to="/login" className="button is-primary">Logout</Link>
+                                <Link to="/login" onClick={()=>toast.success("You're successfully logged out.")} className="button is-primary">Logout</Link>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@ class App extends React.Component {
                         <div className="navbar-item">
                             <div className="buttons">
                                 <Link to="/signup" className="button is-primary">Sign Up</Link>
-                                <Link to="/login" className="button is-primary">Login</Link>
+                                <Link to="/login" className="button is-light">Login</Link>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@ class App extends React.Component {
 
         return (
             <div>
-                <ToastContainer/>
+                <ToastContainer autoClose={2000}/>
                 {nav}
                 <Switch>
                     <Route exact path="/" component={AllPost}/>

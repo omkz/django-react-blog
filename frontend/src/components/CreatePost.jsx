@@ -53,7 +53,6 @@ class CreatePost extends React.Component {
             this.props.history.push('/mypost');
         }).catch(function (error) {
             toast.error(JSON.stringify(error.response.data));
-
         })
 
         this.setState({
