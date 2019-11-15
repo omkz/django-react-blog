@@ -50,8 +50,8 @@ class CreatePost extends React.Component {
         axios.post('http://localhost:8000/post/', object, {
             headers: authHeader()
         }).then(res => {
-            this.props.history.push('/mypost');
-            const { from } = this.props.location.state || { from: { pathname: "/" } };
+            console.log(res);
+            const { from } =  { from: { pathname: "/detail/" + res.data.id } } || this.props.history.push("/");
             this.props.history.push(from);
         }).catch(function (error) {
             toast.error(JSON.stringify(error.response.data));
