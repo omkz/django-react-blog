@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import {authHeader} from "../helpers/auth-header";
 import {withRouter} from 'react-router-dom';
+import {toast} from "react-toastify";
 
 class EditPost extends React.Component {
     constructor(props) {
@@ -22,16 +23,16 @@ class EditPost extends React.Component {
 
     componentDidMount() {
         axios.get('http://localhost:8000/post/' + this.props.match.params.id, {
-             headers: authHeader()
+            headers: authHeader()
         }).then(response => {
-                console.log(response);
-                this.setState({
-                    title: response.data.title,
-                    body: response.data.body,
-                    is_public: response.data.is_public,
-                    user: JSON.parse(localStorage.getItem('user')),
-                });
-            })
+            console.log(response);
+            this.setState({
+                title: response.data.title,
+                body: response.data.body,
+                is_public: response.data.is_public,
+                user: JSON.parse(localStorage.getItem('user')),
+            });
+        })
             .catch(function (error) {
                 console.log(error);
             })
@@ -65,11 +66,18 @@ class EditPost extends React.Component {
             body: this.state.body,
             is_public: this.state.is_public
         };
-        axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/', obj,{
-               headers: authHeader()
-        }).then(res => console.log(res.data));
+        axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/', obj, {
+            headers: authHeader()
+        }).then(res => {
+            console.log(res.data)
+            const {from} = {from: {pathname: "/detail/" + res.data.id}} || this.props.history.push("/");
+            this.props.history.push(from);
+            toast.success("Post successfully updated");
+        }).catch(function (error) {
+            toast.error(JSON.stringify(error.response.data));
+        })
 
-        this.props.history.push('/mypost');
+
     }
 
     render() {
