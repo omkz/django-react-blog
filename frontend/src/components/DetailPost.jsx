@@ -33,15 +33,20 @@ class DetailPost extends React.Component {
 
     render() {
         return (
-            <div className="section">
-                <div className="box">
-                    <div className="content">
-                        <h2> title: {this.state.title} </h2>
-                        <p>body: {this.state.body}</p>
-                        <p>public: {this.state.is_public.toString()}</p>
+            <div className="columns">
+                <div className="column is-three-fifths is-offset-one-fifth">
+                    <div className="section">
+                        <div className="box">
+                            <div className="content">
+                                <h2> title: {this.state.title} </h2>
+                                <p>body: {this.state.body}</p>
+                                <p>public: {this.state.is_public.toString()}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         )
     }
 }
