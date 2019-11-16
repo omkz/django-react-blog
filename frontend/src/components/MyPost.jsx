@@ -40,23 +40,27 @@ class MyPost extends React.Component {
 
     render() {
         return (
-            <div className={"section"}>
-                {this.state.posts.map(post => (
-                    <div className={"box"} key={post.id}>
-                        <div className="content">
-                            <div className="title"> {post.title} </div>
-                            <p>{post.body}</p>
-                            <p>{post.created_at}</p>
-                        </div>
-                        <footer className="card-footer">
-                            <Link to={"/edit/" + post.id} className="card-footer-item">Edit</Link>
-                            <Link to={"#"} onClick={() => this.deletePost(post.id)} className="card-footer-item">Delete</Link>
-                            <Link to={"/detail/" + post.id} className="card-footer-item">Details</Link>
-                        </footer>
+            <div className="columns">
+                <div className="column is-three-fifths is-offset-one-fifth">
+                    <div className={"section"}>
+                        {this.state.posts.map(post => (
+                            <div className={"box"} key={post.id}>
+                                <div className="content">
+                                    <div className="title"> {post.title} </div>
+                                    <p>{post.body}</p>
+                                    <p>{post.created_at}</p>
+                                </div>
+                                <footer className="card-footer">
+                                    <Link to={"/edit/" + post.id} className="card-footer-item">Edit</Link>
+                                    <Link to={"#"} onClick={() => this.deletePost(post.id)}
+                                          className="card-footer-item">Delete</Link>
+                                    <Link to={"/detail/" + post.id} className="card-footer-item">Details</Link>
+                                </footer>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
             </div>
-
         )
     }
 }
