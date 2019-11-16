@@ -82,39 +82,42 @@ class EditPost extends React.Component {
 
     render() {
         return (
-            <div className="section columns">
-                <div className="column is-4 box">
-                    <form onSubmit={this.onSubmit}>
-                        <div className="field">
-                            <label className="label">Title</label>
-                            <div className="control">
-                                <input
-                                    className="input"
-                                    type="text"
-                                    value={this.state.title}
-                                    onChange={this.onChangeTitle}
-                                />
+            <div className="columns">
+                <div className="column is-three-fifths is-offset-one-fifth">
+                    <div className="section">
+                        <form onSubmit={this.onSubmit} className={"box"}>
+                            <div className="field">
+                                <label className="label">Title</label>
+                                <div className="control">
+                                    <input
+                                        className="input"
+                                        type="text"
+                                        value={this.state.title}
+                                        onChange={this.onChangeTitle}
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="field">
-                            <label className="label">Body</label>
-                            <textarea className="textarea" value={this.state.body} onChange={this.onChangeBody}/>
-                        </div>
+                            <div className="field">
+                                <label className="label">Body</label>
+                                <textarea className="textarea" value={this.state.body}
+                                          onChange={this.onChangeBody}/>
+                            </div>
 
-                        <label className="checkbox">
-                            <input type="checkbox" checked={this.state.is_public} onChange={this.onChangePublic}/>
-                            Public (true if checked)
-                        </label>
+                            <label className="checkbox">
+                                <input type="checkbox" checked={this.state.is_public}
+                                       onChange={this.onChangePublic}/>
+                                Public (true if checked)
+                            </label>
 
-                        <div className="control">
-                            <button className="button is-primary">Submit</button>
-                        </div>
-
-                    </form>
-
+                            <div className="control">
+                                <button className="button is-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+
         )
     }
 }
