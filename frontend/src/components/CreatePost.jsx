@@ -53,6 +53,7 @@ class CreatePost extends React.Component {
             console.log(res);
             const { from } =  { from: { pathname: "/detail/" + res.data.id } } || this.props.history.push("/");
             this.props.history.push(from);
+            toast.success("Post successfully created");
         }).catch(function (error) {
             toast.error(JSON.stringify(error.response.data));
         })
