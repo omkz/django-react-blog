@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.request import Request
+from django.shortcuts import get_object_or_404
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -24,6 +25,12 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    def retrieve(self, request, pk=None):
+        queryset = Post.objects.all()
+        post = get_object_or_404(queryset, pk=pk)
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
 
     """
     GET all public post without permission
