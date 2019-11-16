@@ -19,6 +19,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField(default=serializers.CurrentUserDefault(), read_only=True)
+    created_at = serializers.DateTimeField(format="%d %B %Y", required=False, read_only=True)
 
     class Meta:
         model= Post
