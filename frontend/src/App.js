@@ -15,6 +15,7 @@ import {authenticationService} from "./services/authentication.services";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DetailPost from "./components/DetailPost";
+import DetailPostPublic from "./components/DetailPostPublic";
 
 class App extends React.Component {
     constructor(props) {
@@ -100,6 +101,7 @@ class App extends React.Component {
                     <PrivateRoute path="/mypost" component={MyPost}/>
                     <PrivateRoute path='/post/:id/edit' component={EditPost}/>
                     <PrivateRoute path='/post/:id/detail' component={DetailPost}/>
+                    <Route path='/post/:id/public_detail' component={DetailPostPublic}/>
                 </Switch>
             </div>
         )

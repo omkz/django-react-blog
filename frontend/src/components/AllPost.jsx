@@ -38,7 +38,7 @@ class AllPost extends React.Component {
                                                {post.body}
                                             </p>
 
-                                             <Link to={"/post/" + post.id + "/detail"} className="button is-primary">Details</Link>
+                                             <Link to={"/post/" + post.id + "/public_detail"} className="button is-primary">Details</Link>
                                         </div>
 
                                     </div>

@@ -35,5 +35,12 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data)
 
+    @action(methods=['get'], detail=True, permission_classes=[AllowAny])
+    def public_detail(self, request, pk=None):
+        queryset = Post.objects.filter(is_public__exact=True)
+        post = get_object_or_404(queryset, pk=pk)
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+
 
 
