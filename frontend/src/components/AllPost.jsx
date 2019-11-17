@@ -35,11 +35,7 @@ class AllPost extends React.Component {
                                                 <p className="subtitle is-6">@{post.author} , {post.created_at}</p>
                                             </div>
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare
-                                                magna
-                                                eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem.
-                                                Etiam
-                                                finibus odio quis feugiat facilisis.
+                                               {post.body}
                                             </p>
 
                                              <Link to={"/post/" + post.id + "/detail"} className="button is-primary">Details</Link>
