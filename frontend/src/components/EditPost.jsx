@@ -66,11 +66,11 @@ class EditPost extends React.Component {
             body: this.state.body,
             is_public: this.state.is_public
         };
-        axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/edit', obj, {
+        axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/', obj, {
             headers: authHeader()
         }).then(res => {
             console.log(res.data)
-            const {from} = {from: {pathname: "/detail/" + res.data.id}} || this.props.history.push("/");
+            const {from} = {from: {pathname: "/post/" + res.data.id + "/detail"}} || this.props.history.push("/");
             this.props.history.push(from);
             toast.success("Post successfully updated");
         }).catch(function (error) {
