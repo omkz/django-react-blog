@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios';
 import {authHeader} from "../helpers/auth-header";
-import {withRouter} from 'react-router-dom';
 import {toast} from "react-toastify";
 
 class EditPost extends React.Component {
@@ -34,7 +33,7 @@ class EditPost extends React.Component {
             });
         })
             .catch(function (error) {
-                console.log(error);
+                toast.error(JSON.stringify(error.response.data));
             })
     }
 
@@ -122,4 +121,4 @@ class EditPost extends React.Component {
     }
 }
 
-export default withRouter(EditPost);
+export default EditPost;
