@@ -98,8 +98,8 @@ class App extends React.Component {
                     <Route path="/signup" component={SignUp}/>
                     <PrivateRoute path="/createpost" component={CreatePost}/>
                     <PrivateRoute path="/mypost" component={MyPost}/>
-                    <PrivateRoute path='/edit/:id' component={EditPost}/>
-                    <PrivateRoute path='/detail/:id' component={DetailPost}/>
+                    <PrivateRoute path='/post/:id/edit' component={EditPost}/>
+                    <PrivateRoute path='/post/:id/detail' component={DetailPost}/>
                 </Switch>
             </div>
         )

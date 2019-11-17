@@ -51,10 +51,10 @@ class MyPost extends React.Component {
                                     <p>{post.created_at}</p>
                                 </div>
                                 <footer className="card-footer">
-                                    <Link to={"/edit/" + post.id} className="card-footer-item">Edit</Link>
+                                    <Link to={"/post/" + post.id + "/edit"} className="card-footer-item">Edit</Link>
                                     <Link to={"#"} onClick={() => this.deletePost(post.id)}
                                           className="card-footer-item">Delete</Link>
-                                    <Link to={"/detail/" + post.id} className="card-footer-item">Details</Link>
+                                    <Link to={"/post/" + post.id + "/detail"} className="card-footer-item">Detail</Link>
                                 </footer>
                             </div>
                         ))}

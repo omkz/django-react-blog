@@ -66,7 +66,7 @@ class EditPost extends React.Component {
             body: this.state.body,
             is_public: this.state.is_public
         };
-        axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/', obj, {
+        axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/edit', obj, {
             headers: authHeader()
         }).then(res => {
             console.log(res.data)
