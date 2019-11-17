@@ -2,10 +2,10 @@ from .models import Post
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from blog.serializers import UserSerializer, GroupSerializer, PostSerializer
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.request import Request
+from .permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,7 +17,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 class PostViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer
 
     def get_queryset(self, *args, **kwargs):
@@ -25,12 +25,6 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
-
-    def retrieve(self, request, pk=None):
-        queryset = Post.objects.all()
-        post = get_object_or_404(queryset, pk=pk)
-        serializer = PostSerializer(post)
-        return Response(serializer.data)
 
     """
     GET all public post without permission
