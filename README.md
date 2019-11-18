@@ -1,3 +1,9 @@
+Database:
+  - software: postgresql
+  - user: omz
+  - name: myapp
+  - python manage.py migrate
+
 runnning banckend:
  - python3 -m venv env
  - source env/bin/activate
