@@ -2,12 +2,14 @@ Database:
   - software: postgresql
   - user: omz
   - name: myapp
-  - python manage.py migrate
-
+ 
 runnning banckend:
  - python3 -m venv env
  - source env/bin/activate
  - pip install -r requirements.txt
+ - python manage.py migrate
+ - python manage.py createsuperuser
+ - python manage.py loaddata blog/fixtures/blog.yaml
  - python manage.py runserver
  
 running frontend:
