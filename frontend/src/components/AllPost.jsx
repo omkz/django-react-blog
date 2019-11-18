@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import {Link, withRouter} from 'react-router-dom';
+import Blog from "../images/blog.png";
+
 
 class AllPost extends React.Component {
 
@@ -25,7 +27,7 @@ class AllPost extends React.Component {
                                 <article className="media">
                                     <figure className="media-left">
                                         <p className="image is-128x128">
-                                            <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                            <img src={Blog}/>
                                         </p>
                                     </figure>
                                     <div className="media-content">
