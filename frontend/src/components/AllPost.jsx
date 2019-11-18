@@ -37,10 +37,11 @@ class AllPost extends React.Component {
                                                 <p className="subtitle is-6">@{post.author} , {post.created_at}</p>
                                             </div>
                                             <p>
-                                               {post.body}
+                                                {post.body}
                                             </p>
 
-                                             <Link to={"/post/" + post.id + "/public_detail"} className="button is-primary">Details</Link>
+                                            <Link to={"/post/" + post.id + "/public_detail"}
+                                                  className="button is-primary">Details</Link>
                                         </div>
 
                                     </div>

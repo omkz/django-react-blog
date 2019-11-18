@@ -28,7 +28,6 @@ class CreatePost extends React.Component {
 
 
     onChangePublic(e) {
-        // const { is_public } = e.target;
         this.setState({
             is_public: !this.state.is_public
         });
@@ -50,8 +49,7 @@ class CreatePost extends React.Component {
         axios.post('http://localhost:8000/post/', object, {
             headers: authHeader()
         }).then(res => {
-            console.log(res);
-            const { from } =  { from: { pathname: "/post/" + res.data.id + "/detail" } } || this.props.history.push("/");
+            const {from} = {from: {pathname: "/post/" + res.data.id + "/detail"}} || this.props.history.push("/");
             this.props.history.push(from);
             toast.success("Post successfully created");
         }).catch(function (error) {
@@ -105,4 +103,4 @@ class CreatePost extends React.Component {
     }
 }
 
-export default withRouter(CreatePost);
+export default CreatePost;

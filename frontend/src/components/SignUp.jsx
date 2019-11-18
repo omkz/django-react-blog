@@ -52,7 +52,6 @@ class SignUp extends React.Component {
                 toast.success("You have successfully registered.");
             })
             .catch(function (error) {
-                console.log(error.message);
                 toast.error(JSON.stringify(error.response.data));
             });
 

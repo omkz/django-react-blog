@@ -40,9 +40,8 @@ class Login extends React.Component {
                 toast.success("You're successfully logged in.");
             })
             .catch(function (error) {
-            console.log(error.message);
-            toast.error("login failed");
-        });
+                toast.error(JSON.stringify(error.response.data));
+            });
 
     }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import {authHeader} from "../helpers/auth-header";
+import {toast} from "react-toastify";
 
 class DetailPost extends React.Component {
     constructor(props) {
@@ -18,16 +19,14 @@ class DetailPost extends React.Component {
         axios.get('http://localhost:8000/post/' + this.props.match.params.id, {
             headers: authHeader()
         }).then(response => {
-            console.log(response);
             this.setState({
                 title: response.data.title,
                 body: response.data.body,
                 is_public: response.data.is_public,
             });
+        }).catch(function (error) {
+            toast.error(JSON.stringify(error.response.data));
         })
-            .catch(function (error) {
-                console.log(error);
-            })
     }
 
 

@@ -24,15 +24,13 @@ class EditPost extends React.Component {
         axios.get('http://localhost:8000/post/' + this.props.match.params.id, {
             headers: authHeader()
         }).then(response => {
-            console.log(response);
             this.setState({
                 title: response.data.title,
                 body: response.data.body,
                 is_public: response.data.is_public,
                 user: JSON.parse(localStorage.getItem('user')),
             });
-        })
-            .catch(function (error) {
+        }).catch(function (error) {
                 toast.error(JSON.stringify(error.response.data));
             })
     }
@@ -45,7 +43,6 @@ class EditPost extends React.Component {
 
 
     onChangePublic(e) {
-        // const {is_public} = e.target;
         this.setState({
             is_public: !this.state.is_public
         });
@@ -68,7 +65,6 @@ class EditPost extends React.Component {
         axios.put('http://localhost:8000/post/' + this.props.match.params.id + '/', obj, {
             headers: authHeader()
         }).then(res => {
-            console.log(res.data)
             const {from} = {from: {pathname: "/post/" + res.data.id + "/detail"}} || this.props.history.push("/");
             this.props.history.push(from);
             toast.success("Post successfully updated");
