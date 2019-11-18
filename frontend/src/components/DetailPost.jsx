@@ -10,7 +10,9 @@ class DetailPost extends React.Component {
         this.state = {
             title: '',
             body: '',
-            is_public: ""
+            is_public: "",
+            author: "",
+            created_at: ""
 
         }
     }
@@ -23,6 +25,8 @@ class DetailPost extends React.Component {
                 title: response.data.title,
                 body: response.data.body,
                 is_public: response.data.is_public,
+                author: response.data.author,
+                created_at: response.data.created_at,
             });
         }).catch(function (error) {
             toast.error(JSON.stringify(error.response.data));
@@ -37,9 +41,11 @@ class DetailPost extends React.Component {
                     <div className="section">
                         <div className="box">
                             <div className="content">
-                                <h2> title: {this.state.title} </h2>
-                                <p>body: {this.state.body}</p>
-                                <p>public: {this.state.is_public.toString()}</p>
+                                <p className="title is-4">{this.state.title}</p>
+                                <p className="subtitle is-6">{this.state.created_at}, public = {this.state.is_public.toString()}</p>
+                                <p>
+                                    {this.state.body}
+                                </p>
                             </div>
                         </div>
                     </div>
