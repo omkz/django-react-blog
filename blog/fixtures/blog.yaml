@@ -4,8 +4,8 @@
     title: Lorem ipsum dolor sit amet, consectetur adipiscing elit
     body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
     is_public: true
-    created_at: "2019-06-04T15:43:29.899"
-    updated_at: "2019-06-04T15:43:29.899"
+    created_at: "2019-11-04T15:43:29.899"
+    updated_at: "2019-11-04T15:43:29.899"
     author_id: 1
 - model: blog.post
   pk: 2
@@ -13,7 +13,7 @@
     title: Lorem ipsum dolor sit amet, consectetur adipiscing elit
     body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
     is_public: true
-    created_at: "2019-06-04T15:43:29.899"
-    updated_at: "2019-06-04T15:43:29.899"
+    created_at: "2019-11-04T15:43:29.899"
+    updated_at: "2019-11-04T15:43:29.899"
     author_id: 1
     
