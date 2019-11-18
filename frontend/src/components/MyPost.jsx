@@ -47,8 +47,8 @@ class MyPost extends React.Component {
                             <div className={"box"} key={post.id}>
                                 <div className="content">
                                     <div className="title"> {post.title} </div>
+                                    <div className="subtitle is-6">@{post.author} , {post.created_at}</div>
                                     <p>{post.body}</p>
-                                    <p>{post.created_at}</p>
                                 </div>
                                 <footer className="card-footer">
                                     <Link to={"/post/" + post.id + "/edit"} className="card-footer-item">Edit</Link>
